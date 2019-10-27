@@ -1,3 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponse 
+from .models import Todo
 
-# Create your views here.
+def index(req):
+    todos = Todo.objects.all()
+    return render(req,'todo/index.html',{'todos': todos })
