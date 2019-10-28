@@ -1,14 +1,15 @@
-<!DOCTYPE html>
-<html lang='en'>
-    <head></head>
-    <body>
-        <h1>Todo</h1>
+{% extends 'todo/base.html' %}
+        
+{% block content %}
         <ul>
             {% for todo in todos %}
-                <li>{{todo.text}}</li>
+                <li>
+                    {{todo.text}}
+                    <a href="{%url 'detail' pk=todo.pk %}">detail</a>
+                    <a href="{%url 'delete' pk=todo.pk %}">delete</a>
+                </li>
             {% empty %}
             <h3> No task now!</h3>
             {% endfor %}
         </ul>
-    </body>
-</html>
+{% endblock %}
